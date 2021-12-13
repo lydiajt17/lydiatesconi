@@ -1,2 +1,3 @@
-pip install pipreqs
-pipreqs /home/project/lydiatesconi
+numpy
+matplotlib==3.*
+pandas
