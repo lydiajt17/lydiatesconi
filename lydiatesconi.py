@@ -171,7 +171,9 @@ def pie_chart(crimedf):
     df_new2 = pd.DataFrame(
     data={'offense': crimedf_dict.keys(), 'count': crimedf_dict.values()},
     ).sort_values('count', ascending=False).head(10)
+    
     st.write(df_new)
+
     new_row = pd.DataFrame(data={
         'offense': ['Others'],
         'count': [df_new['count'][10:].sum()]
@@ -184,22 +186,22 @@ def pie_chart(crimedf):
     button = st.button("Click to see a pie chart with all values!!")
     button2 = st.button("Click to see a pie chart with the top 10 values!!")
 
-    if button:
-        plt.subplots(figsize=(30, 9))
-        plt.pie('count', labels=None, data=df2, autopct="%.2f%%", pctdistance=1.1, radius=1.0, colors=['lightcoral',
-                'midnightblue', 'violet', 'deepskyblue', 'chocolate', 'rosybrown', 'slateblue', 'tomato', 'peachpuff',
-                                                                                                       'lightcyan', 'royalblue'])
-        plt.legend(labels=df2['offense'], loc='upper right', fontsize="x-small")
-        plt.title('Top 10 Crimes and Other Category')
-        return plt
-    if button2:
-        plt.subplots(figsize=(30, 9))
-        plt.pie('count', labels=None, data=df_new2, autopct="%.2f%%", pctdistance=1.1, radius=1.0, colors=['lightcoral',
-                'midnightblue', 'violet', 'deepskyblue', 'chocolate', 'rosybrown', 'slateblue', 'tomato', 'peachpuff',
-                                                                                              'royalblue'])
-        plt.title('Top 10 Crimes')
-        plt.legend(labels=df_new2['offense'], loc='upper right', fontsize="x-small")
-        return plt
+#     if button:
+#         plt.subplots(figsize=(30, 9))
+#         plt.pie('count', labels=None, data=df2, autopct="%.2f%%", pctdistance=1.1, radius=1.0, colors=['lightcoral',
+#                 'midnightblue', 'violet', 'deepskyblue', 'chocolate', 'rosybrown', 'slateblue', 'tomato', 'peachpuff',
+#                                                                                                        'lightcyan', 'royalblue'])
+#         plt.legend(labels=df2['offense'], loc='upper right', fontsize="x-small")
+#         plt.title('Top 10 Crimes and Other Category')
+#         return plt
+#     if button2:
+#         plt.subplots(figsize=(30, 9))
+#         plt.pie('count', labels=None, data=df_new2, autopct="%.2f%%", pctdistance=1.1, radius=1.0, colors=['lightcoral',
+#                 'midnightblue', 'violet', 'deepskyblue', 'chocolate', 'rosybrown', 'slateblue', 'tomato', 'peachpuff',
+#                                                                                               'royalblue'])
+#         plt.title('Top 10 Crimes')
+#         plt.legend(labels=df_new2['offense'], loc='upper right', fontsize="x-small")
+#         return plt
 
 # Main function
 def main():
