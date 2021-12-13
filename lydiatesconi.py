@@ -171,7 +171,7 @@ def pie_chart(crimedf):
     df_new2 = pd.DataFrame(
     data={'offense': crimedf_dict.keys(), 'count': crimedf_dict.values()},
     ).sort_values('count', ascending=False).head(10)
-st.write(df_new)
+    st.write(df_new)
     new_row = pd.DataFrame(data={
         'offense': ['Others'],
         'count': [df_new['count'][10:].sum()]
