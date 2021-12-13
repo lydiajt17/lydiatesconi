@@ -11,7 +11,6 @@ histogram, and pie chart.
 """
 
 # Imported Packages
-import folium
 import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
@@ -95,7 +94,7 @@ def showonmap(crimelist, color_select):
 
     # Centering the Boston Map for the default
     center = [42.36165764, -71.08567345]
-    bostonmap = folium.Map(location=center, zoom_start=slider)
+    bostonmap = folium_static.Map(location=center, zoom_start=slider)
 
     # Creating popup text for the flag marks to show over each location
     tooltips = "Crime Spot!"
@@ -105,8 +104,8 @@ def showonmap(crimelist, color_select):
         if x["DISTRICT"] == district_select:
             lat = x.get("Lat")
             lon = x.get("Long")
-            folium.Marker(location=
-                [lat, lon], popup="flag", icon=folium.Icon(icon="cloud", icon_color=color_select),
+            folium_static.Marker(location=
+                [lat, lon], popup="flag", icon=folium_static.Icon(icon="cloud", icon_color=color_select),
                           tooltip=tooltips,
                           ).add_to(bostonmap)
     # Displaying the map
