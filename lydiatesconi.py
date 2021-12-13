@@ -11,6 +11,7 @@ histogram, and pie chart.
 """
 
 # Imported Packages
+import folium
 import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
@@ -94,7 +95,7 @@ def showonmap(crimelist, color_select):
 
     # Centering the Boston Map for the default
     center = [42.36165764, -71.08567345]
-    bostonmap = folium_static.Map(location=center, zoom_start=slider)
+    bostonmap = folium.Map(location=center, zoom_start=slider)
 
     # Creating popup text for the flag marks to show over each location
     tooltips = "Crime Spot!"
@@ -104,8 +105,8 @@ def showonmap(crimelist, color_select):
         if x["DISTRICT"] == district_select:
             lat = x.get("Lat")
             lon = x.get("Long")
-            folium_static.Marker(location=
-                [lat, lon], popup="flag", icon=folium_static.Icon(icon="cloud", icon_color=color_select),
+            folium.Marker(location=
+                [lat, lon], popup="flag", icon=folium.Icon(icon="cloud", icon_color=color_select),
                           tooltip=tooltips,
                           ).add_to(bostonmap)
     # Displaying the map
@@ -252,7 +253,7 @@ def main():
         st.markdown(f"<h1 style='text-align: center; color: {color_select};'>Boston Crime Analysis</h1>", unsafe_allow_html=True)
         st.write('On this crime webpage you will see a sidebar with different interactive elements to display '
                  'important information about Boston crime. You will see the data displayed in visuals such as a '
-                 'table, map, bar chart, histogram, box plot, and pie chart. Please view the sidebar to get started!')
+                 'table, map, bar chart, histogram, and pie chart. Please view the sidebar to get started!')
         image()
     elif side == "About the Data":
         table_of_values(df, color_select)
